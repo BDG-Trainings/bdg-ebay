@@ -7,6 +7,8 @@ import com.bdg.bdgebay.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 //import javax.persistence.EntityManager;
 //import javax.persistence.PersistenceContext;
 
@@ -28,11 +30,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User create(UserCreationRequest creationRequest) {
-
-        //Implement this
-
-        return null;
+    public User create(final UserCreationRequest creationRequest) {
+        final User user = new User();
+        user.setCreated(LocalDateTime.now());
+        user.setPassword(creationRequest.getPassword());
+        user.setUserName(creationRequest.getUserName());
+        user.setLastName(creationRequest.getLastName());
+        user.setFirstName(creationRequest.getFirstName());
+        user.setEmailAddress(creationRequest.getEmailAddress());
+        return user;
     }
 
     @Override
