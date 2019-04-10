@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 /**
@@ -35,7 +36,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User create(final UserCreationRequest creationRequest) {
         final User user = new User();
-        user.setCreated(LocalDateTime.now());
         user.setPassword(creationRequest.getPassword());
         user.setUserName(creationRequest.getUserName());
         user.setLastName(creationRequest.getLastName());
@@ -60,8 +60,14 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User update(UserUpdateRequest updateRequest) {
+        Optional<User> byId = userRepository.findById(updateRequest.getUserId());
+        if (byId.isPresent()) {
+            User user = byId.get();
+            user.setUserName(updateRequest.getUserName());
+            user.setPassword(updateRequest.getPassword());
+            return userRepository.save(user);
+        }
 
-        //Implement this (at first need to get user from db after do save)
         return null;
     }
 
