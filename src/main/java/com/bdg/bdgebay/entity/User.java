@@ -4,54 +4,54 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-//import javax.persistence.*;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * @author William Arustamyan
  */
 
-//@Entity
-//@Table(name = "t_user")
+@Entity
+@Table(name = "t_user")
 public class User {
 
-//    @Id
-//    @SequenceGenerator(name = "seq_user", sequenceName = "seq_user")
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
-//    @Column(name = "id", unique = true, nullable = false, updatable = false)
+    @Id
+    @SequenceGenerator(name = "seq_user", sequenceName = "seq_user")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
+    @Column(name = "id", unique = true, nullable = false, updatable = false)
     private Long id;
 
-//    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-//    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-//    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name", nullable = false)
     private String userName;
 
-//    @Column(name = "email_address", nullable = false)
+    @Column(name = "email_address", nullable = false)
     private String emailAddress;
 
-//    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-//    @Column(name = "created", nullable = false)
+    @Column(name = "created", nullable = false)
     private LocalDateTime created;
 
-//    @Column(name = "updated", nullable = false)
+    @Column(name = "updated", nullable = false)
     private LocalDateTime updated;
 
-//    @Column(name = "deleted", nullable = true)
+    @Column(name = "deleted", nullable = true)
     private LocalDateTime deleted;
 
-//    @PrePersist
+    @PrePersist
     protected void onCreate() {
         this.created = LocalDateTime.now();
         this.updated = this.created;
     }
 
-//    @PreUpdate
+    @PreUpdate
     protected void onUpdate() {
         this.updated = LocalDateTime.now();
     }
