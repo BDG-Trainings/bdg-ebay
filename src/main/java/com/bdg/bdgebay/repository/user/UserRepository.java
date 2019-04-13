@@ -11,6 +11,10 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByIdAndDeletedIsNull(Long userId);
+
+    User findByFirstNameAndUserNameAndId(String firstName, String userName, Long id);
+
+    User findByUserName(String userName);
 }
 
 
