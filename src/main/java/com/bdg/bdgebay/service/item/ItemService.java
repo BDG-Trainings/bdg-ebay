@@ -6,14 +6,12 @@ import com.bdg.bdgebay.entity.Item;
 
 
 public interface ItemService {
-	
-	    Item get(Long userId);
 
-	    Item create(ItemCreationRequest creationRequest);
+    Item get(Long userId);
 
-	    Item delete(Long userId);
+    Item create(ItemCreationRequest creationRequest);
 
-	    Item update(ItemUpdateRequest updateRequest);
+    Item delete(Long userId);
 
-
+    Item update(ItemUpdateRequest updateRequest);
 }

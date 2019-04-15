@@ -1,7 +1,6 @@
 package com.bdg.bdgebay.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "t_item")
@@ -13,9 +12,17 @@ public class Item {
     @Column(name = "id", unique = true, nullable = false, updatable = false)
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
-    private double price;
+
+    @Column(name = "price", nullable = false)
+    private Double price;
+
+    @Column(name = "description", nullable = false)
     private String description;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
     public Long getId() {

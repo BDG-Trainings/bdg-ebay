@@ -35,6 +35,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User create(final UserCreationRequest creationRequest) {
+        final User found = userRepository.findByUserName(creationRequest.getUserName());
+
+        if (found != null) {
+            throw new UserNameExistException(creationRequest.getUserName());
+        }
+
         final User user = new User();
         user.setPassword(creationRequest.getPassword());
         user.setUserName(creationRequest.getUserName());

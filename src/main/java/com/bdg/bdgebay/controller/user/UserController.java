@@ -1,11 +1,14 @@
 package com.bdg.bdgebay.controller.user;
 
+import com.bdg.bdgebay.common.ApiResponse;
 import com.bdg.bdgebay.dto.user.UserCreationRequest;
 import com.bdg.bdgebay.dto.user.UserUpdateRequest;
 import com.bdg.bdgebay.entity.User;
+import com.bdg.bdgebay.service.user.UserNameExistException;
 import com.bdg.bdgebay.service.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -23,8 +26,13 @@ public class UserController {
 
 
     @RequestMapping(path = "/user/create", method = RequestMethod.POST)
-    public User createUser(@RequestBody UserCreationRequest creationRequest) {
-        return userService.create(creationRequest);
+    public ApiResponse<User> createUser(@RequestBody UserCreationRequest creationRequest) {
+
+        try {
+            return new ApiResponse<>(userService.create(creationRequest), "Success", HttpStatus.CREATED);
+        } catch (UserNameExistException ex) {
+            return new ApiResponse<>(null, ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = "/user/delete/{userId}", method = RequestMethod.DELETE)

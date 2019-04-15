@@ -10,13 +10,13 @@ create table t_category (
 );
 
 insert into t_category (id, category_type, created, updated, deleted)
-values (50, 'MUSIC', current_timestamp, current_timestamp, null );
+values (50, 'MUSIC', current_timestamp, current_timestamp, null);
 
 insert into t_category (id, category_type, created, updated, deleted)
-values (150, 'SPORT', current_timestamp, current_timestamp, null );
+values (150, 'SPORT', current_timestamp, current_timestamp, null);
 
 insert into t_category (id, category_type, created, updated, deleted)
-values (200, 'MOVIE', current_timestamp, current_timestamp, null );
+values (200, 'MOVIE', current_timestamp, current_timestamp, null);
 
 insert into t_category (id, category_type, created, updated, deleted)
-values (250, 'FASHION', current_timestamp, current_timestamp, null );
+values (250, 'FASHION', current_timestamp, current_timestamp, null);

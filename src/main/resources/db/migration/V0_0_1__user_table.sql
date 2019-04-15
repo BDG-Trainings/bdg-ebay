@@ -8,6 +8,7 @@ create table t_user (
   user_name     varchar(100) not null,
   email_address varchar(100) not null,
   password      varchar(20)  not null,
+  category_id   bigint,
   created       timestamp    not null,
   updated       timestamp    not null,
   deleted       timestamp
