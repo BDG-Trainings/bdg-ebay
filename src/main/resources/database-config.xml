@@ -13,8 +13,9 @@
 
 
     <context:annotation-config/>
+    <bean id="randomNumberAnnotationProcessor" class="com.bdg.bdgebay.RandomNumberAnnotationProcessor"/>
 
-    <context:property-placeholder location="classpath:repository.properties"
+    <context:property-placeholder location="classpath:database-connection.properties"
                                   local-override="false"
                                   ignore-unresolvable="true"/>
 

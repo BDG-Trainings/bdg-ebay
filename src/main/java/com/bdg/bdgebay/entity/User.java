@@ -2,10 +2,10 @@ package com.bdg.bdgebay.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 
 /**
  * @author William Arustamyan
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "t_user")
-public class User {
+public class User implements Comparable<User>, Comparator<User> {
 
     @Id
     @SequenceGenerator(name = "seq_user", sequenceName = "seq_user")
@@ -129,6 +129,12 @@ public class User {
     }
 
     @Override
+    public int compare(User o1, User o2) {
+
+        return 0;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 
@@ -164,15 +170,11 @@ public class User {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .append("firstName", firstName)
-                .append("lastName", lastName)
-                .append("userName", userName)
-                .append("emailAddress", emailAddress)
-                .append("created", created)
-                .append("updated", updated)
-                .append("deleted", deleted)
-                .toString();
+        return String.valueOf(this.id);
+    }
+
+    @Override
+    public int compareTo(User anotherUser) {
+        return this.getId().compareTo(anotherUser.getId());
     }
 }
